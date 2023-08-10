@@ -19,8 +19,8 @@ class Catalogo:
     def curtir(self):
         self._curtidas = self._curtidas + 1
 
-    def imprime(self):
-        print(f'Nome: {self._nome}\nAno: {self.ano}\nCurtidas:{self._curtidas}')
+    def __str__(self):
+        return f'Nome: {self._nome}\nAno: {self.ano}\nCurtidas:{self._curtidas}'
 
 
 class Filme(Catalogo):
@@ -28,16 +28,16 @@ class Filme(Catalogo):
         super().__init__(nome, ano)
         self.duracao = duracao
 
-    def imprime(self):
-        print(f'Nome: {self._nome}\nAno: {self.ano}\nDuração: {self.duracao}\n\nCurtidas:{self._curtidas}')
+    def __str__(self):
+        return f'Nome: {self._nome}\nAno: {self.ano}\nDuração: {self.duracao}\n\nCurtidas:{self._curtidas}'
 
 class Serie(Catalogo):
     def __init__(self, nome, ano, temporada):
         super().__init__(nome, ano)
         self.temporada = temporada
 
-    def imprime(self):
-        print(f'Nome: {self._nome}\nAno: {self.ano}\nTemporadas: {self.temporada}\nCurtidas:{self._curtidas}')
+    def __str__(self):
+        return f'Nome: {self._nome}\nAno: {self.ano}\nTemporadas: {self.temporada}\nCurtidas:{self._curtidas}'
 
 
 cabana = Filme('a branca de neve', 2018, 160)
@@ -57,5 +57,5 @@ for catalogo in filmes_e_series:
     #     diferenciador = catalogo.duracao
     # else:
     #     diferenciador = catalogo.temporada
-    catalogo.imprime()
+    print(catalogo)
     print("---------------------------")
