@@ -18,17 +18,26 @@ class Catalogo:
 
     def curtir(self):
         self._curtidas = self._curtidas + 1
+
+    def imprime(self):
+        print(f'Nome: {self._nome}\nAno: {self.ano}\nCurtidas:{self._curtidas}')
+
+
 class Filme(Catalogo):
     def __init__(self, nome, ano, duracao):
         super().__init__(nome, ano)
         self.duracao = duracao
 
+    def imprime(self):
+        print(f'Nome: {self._nome}\nAno: {self.ano}\nDuração: {self.duracao}\n\nCurtidas:{self._curtidas}')
 
 class Serie(Catalogo):
     def __init__(self, nome, ano, temporada):
         super().__init__(nome, ano)
         self.temporada = temporada
 
+    def imprime(self):
+        print(f'Nome: {self._nome}\nAno: {self.ano}\nTemporadas: {self.temporada}\nCurtidas:{self._curtidas}')
 
 
 cabana = Filme('a branca de neve', 2018, 160)
@@ -43,11 +52,10 @@ theDoctor = Serie('the doctor', 2018, 2)
 filmes_e_series = [cabana, theDoctor]
 
 for catalogo in filmes_e_series:
-    # diferenciador = catalogo.duracao if hasattr(catalogo, 'duracao') else catalogo.temporada
-    # print(f'Nome: {catalogo.nome}\nAno: {catalogo.ano}\n {diferenciador}\nCurtidas:{cabana.curtidas}')
 
-    if hasattr(catalogo, 'duracao'):
-        diferenciador = catalogo.duracao
-    else:
-        diferenciador = catalogo.temporada
-    print(f'Nome: {catalogo.nome}\nAno: {catalogo.ano}\n {diferenciador}\nCurtidas:{cabana.curtidas}')
+    # if hasattr(catalogo, 'duracao'):
+    #     diferenciador = catalogo.duracao
+    # else:
+    #     diferenciador = catalogo.temporada
+    catalogo.imprime()
+    print("---------------------------")
