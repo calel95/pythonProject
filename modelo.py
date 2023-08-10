@@ -39,19 +39,35 @@ class Serie(Catalogo):
     def __str__(self):
         return f'Nome: {self._nome}\nAno: {self.ano}\nTemporadas: {self.temporada}\nCurtidas:{self._curtidas}'
 
+class Playlist(list):
+    def __init__(self, nome, programas):
+        self._nome = nome
+        super().__init__(programas)
 
-cabana = Filme('a branca de neve', 2018, 160)
-cabana.curtir()
-cabana.curtir()
+
+
+bdn = Filme('a branca de neve', 2018, 160)
+theDoctor = Serie('the doctor', 2018, 2)
+senhorDosAneis = Serie('Senhor dos Anéis', 2004, 1)
+galaxy = Filme('Guardiões da Galaxia', 2023, 180)
+bdn.curtir()
+bdn.curtir()
+senhorDosAneis.curtir()
+bdn.curtir()
+galaxy.curtir()
+galaxy.curtir()
+galaxy.curtir()
+galaxy.curtir()
 #print(f'Nome: {cabana.nome}\nAno: {cabana.ano}\nDuração: {cabana.duracao}min\nCurtidas:{cabana.curtidas}')
 
-theDoctor = Serie('the doctor', 2018, 2)
+
 
 #print(f'Nome: {theDoctor.nome} - Ano: {theDoctor.ano} - Temporadas: {theDoctor.temporada} - Curtidas: {theDoctor.curtidas}')
 
-filmes_e_series = [cabana, theDoctor]
+filmes_e_series = [bdn, theDoctor,senhorDosAneis,galaxy]
+playlist_fds = Playlist('Playlist para assistir no final de semana', filmes_e_series)
 
-for catalogo in filmes_e_series:
+for catalogo in playlist_fds:
 
     # if hasattr(catalogo, 'duracao'):
     #     diferenciador = catalogo.duracao
@@ -59,3 +75,5 @@ for catalogo in filmes_e_series:
     #     diferenciador = catalogo.temporada
     print(catalogo)
     print("---------------------------")
+
+    print(f'{catalogo.nome == "Guardiões Da Galaxia"}')
