@@ -39,12 +39,20 @@ class Serie(Catalogo):
     def __str__(self):
         return f'Nome: {self._nome}\nAno: {self.ano}\nTemporadas: {self.temporada}\nCurtidas:{self._curtidas}'
 
-class Playlist(list):
+class Playlist:
     def __init__(self, nome, programas):
         self._nome = nome
-        super().__init__(programas)
+        self._programas = programas
 
+#torna lista um iteravel o __getitem__
+    def __getitem__(self, item):
+        return self._programas[item]
+    @property
+    def listagem(self):
+        return self._programas
 
+    def __len__(self):
+        return len(self._programas)
 
 bdn = Filme('a branca de neve', 2018, 160)
 theDoctor = Serie('the doctor', 2018, 2)
@@ -67,6 +75,7 @@ galaxy.curtir()
 filmes_e_series = [bdn, theDoctor,senhorDosAneis,galaxy]
 playlist_fds = Playlist('Playlist para assistir no final de semana', filmes_e_series)
 
+print(f"Quantidade de Filmes na Playlist: {len(playlist_fds)}")
 for catalogo in playlist_fds:
 
     # if hasattr(catalogo, 'duracao'):
@@ -76,4 +85,4 @@ for catalogo in playlist_fds:
     print(catalogo)
     print("---------------------------")
 
-    print(f'{catalogo.nome == "Guardiões Da Galaxia"}')
+    #print(f'{catalogo.nome == "Guardiões Da Galaxia"}')
